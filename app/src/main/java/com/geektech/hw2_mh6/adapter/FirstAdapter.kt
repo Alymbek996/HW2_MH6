@@ -1,13 +1,13 @@
-package com.example.baselesson.ui.first
+package com.geektech.hw2_mh6.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.example.baselesson.databinding.ItemImageBinding
-import com.example.baselesson.extension.load
 import com.example.baselesson.model.Image
+import com.geektech.hw2_mh6.databinding.ImageItemBinding
+import com.geektech.hw2_mh6.load
 
 class FirstAdapter : RecyclerView.Adapter<FirstAdapter.FirstViewHolder>() {
 
@@ -16,17 +16,17 @@ class FirstAdapter : RecyclerView.Adapter<FirstAdapter.FirstViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FirstViewHolder {
         return FirstViewHolder(
-            ItemImageBinding.inflate(
+            ImageItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
     }
-
     override fun onBindViewHolder(holder: FirstViewHolder, position: Int) {
         holder.bind(list[position])
     }
+
 
     override fun getItemCount(): Int {
         return list.size
@@ -38,10 +38,11 @@ class FirstAdapter : RecyclerView.Adapter<FirstAdapter.FirstViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class FirstViewHolder(private var binding: ItemImageBinding): RecyclerView.ViewHolder(binding.root){
+    inner class FirstViewHolder(private var binding: ImageItemBinding): RecyclerView.ViewHolder(binding.root){
+
 
         fun bind(image: Image) = with(binding){
-            ivFirst.load(image.image)
+            ivFirst. load(image.image)
             itemView.setOnClickListener {
                 if (image.bool){
                     image.bool = false
@@ -54,7 +55,6 @@ class FirstAdapter : RecyclerView.Adapter<FirstAdapter.FirstViewHolder>() {
                 }
             }
         }
-
     }
 }
 
